@@ -12,8 +12,8 @@ namespace GuiLoginRegis
     {
         private LoginSystem<string> loginSystem;
 
-        private const string AdminAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\admin_accounts.json"; // Ganti dengan path yang sesuai
-        private const string UserAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\user_accounts.json"; // Ganti dengan path yang sesuai
+        private const string AdminAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\admin_accounts.json";
+        private const string UserAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\user_accounts.json";
 
         public LoginPage()
         {
@@ -23,24 +23,30 @@ namespace GuiLoginRegis
 
         private void InitializeLoginSystem()
         {
-            // Inisialisasi LoginSystem
-            var adminAccounts = LoadAccountsFromFile<string>(AdminAccountsFilePath); // Ganti dengan implementasi sesuai kebutuhan
-            var userAccounts = LoadAccountsFromFile<string>(UserAccountsFilePath); // Ganti dengan implementasi sesuai kebutuhan
+            var adminAccounts = LoadAccountsFromFile<string>(AdminAccountsFilePath);
+            var userAccounts = LoadAccountsFromFile<string>(UserAccountsFilePath);
             loginSystem = new LoginSystem<string>(adminAccounts, userAccounts);
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string username = UsernameBox.Text.Trim(); // Ambil username dari TextBox UsernameBox
-            string password = PasswordBox.Text; // Ambil password dari TextBox PasswordBox
+            string username = UsernameBox.Text.Trim();
+            string password = PasswordBox.Text;
 
             try
             {
-                loginSystem.StartLogin(username, password); // Mulai proses login
+                // Coba login sebagai admin terlebih dahulu
+                loginSystem.SetLoginStrategy(new AdminLoginStrategy<string>());
 
-                if (loginSystem.StartLogin(username, password))
+                if (!loginSystem.StartLogin(username, password))
                 {
-                    // Login successful
+                    // Jika gagal, coba login sebagai user
+                    loginSystem.SetLoginStrategy(new UserLoginStrategy<string>());
+                    loginSystem.StartLogin(username, password);
+                }
+
+                if (loginSystem.IsLoggedIn())
+                {
                     if (loginSystem.IsAdminLoggedIn())
                     {
                         MessageBox.Show("Admin berhasil login!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -54,7 +60,6 @@ namespace GuiLoginRegis
                 }
                 else
                 {
-                    // Login failed - Display error message
                     MessageBox.Show("Login gagal. Username atau password salah.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -66,7 +71,6 @@ namespace GuiLoginRegis
 
         private void OpenAdminPage()
         {
-            // Buka form HalamanAdmin
             HalamanAdmin adminForm = new HalamanAdmin();
             adminForm.Show();
             this.Hide();
@@ -74,7 +78,6 @@ namespace GuiLoginRegis
 
         private void OpenUserPage()
         {
-            // Buka form HalamanUser
             HalamanUser userForm = new HalamanUser();
             userForm.Show();
             this.Hide();
@@ -89,7 +92,6 @@ namespace GuiLoginRegis
 
         private void RegisterLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Tindakan jika link register ditekan
             RegisUser regisUserForm = new RegisUser();
             regisUserForm.Show();
             this.Hide();
@@ -103,14 +105,7 @@ namespace GuiLoginRegis
                 {
                     string json = File.ReadAllText(filename);
                     List<Account<T>> accounts = JsonSerializer.Deserialize<List<Account<T>>>(json);
-                    if (accounts != null)
-                    {
-                        return accounts;
-                    }
-                    else
-                    {
-                        return new List<Account<T>>();
-                    }
+                    return accounts ?? new List<Account<T>>();
                 }
                 else
                 {
@@ -128,12 +123,10 @@ namespace GuiLoginRegis
 
         private void PasswordBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-
         }
 
         private void UsernameBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using GuiLoginRegis.controller;
 
 namespace GuiLoginRegis
 {
@@ -101,6 +102,8 @@ namespace GuiLoginRegis
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
+            loginSystem.Logout();
+
             MessageBox.Show("Successfully logged out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             LoginPage login = new LoginPage();
