@@ -1,0 +1,86 @@
+[
+  {
+    "Nama": "John Doe",
+    "Nim": "123456789",
+    "Tanggal": "2024-06-18",
+    "Jam": "09:00",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "sfkamsfas",
+    "Nim": "fasfsafa",
+    "Tanggal": "fsafa",
+    "Jam": "sfasfas",
+    "Status": "belum kosultasi"
+  },
+  {
+    "Nama": "sfasfas",
+    "Nim": "sfasf",
+    "Tanggal": "asfasf",
+    "Jam": "fasfas",
+    "Status": "belum konsultasi"
+  },
+  {
+    "Nama": "fsafsafas",
+    "Nim": "fasfasf",
+    "Tanggal": "asfasfasf",
+    "Jam": "asfasfasf",
+    "Status": "belum konsultasi"
+  },
+  {
+    "Nama": "kamal",
+    "Nim": "senin",
+    "Tanggal": "13",
+    "Jam": "13",
+    "Status": "belum konsultasi"
+  },
+  {
+    "Nama": "makan",
+    "Nim": "siang",
+    "Tanggal": "11",
+    "Jam": "16",
+    "Status": "belum konsultasi"
+  },
+  {
+    "Nama": "qwrf3qwe",
+    "Nim": "qwfe",
+    "Tanggal": "12",
+    "Jam": "12",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "fachry",
+    "Nim": "214124124124124214",
+    "Tanggal": "fachry",
+    "Jam": "fachry",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "fadlan",
+    "Nim": "fadlan",
+    "Tanggal": "fadlan",
+    "Jam": "fadlan",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "fsafsaf",
+    "Nim": "fasfas",
+    "Tanggal": "asfasfa",
+    "Jam": "asfasfas",
+    "Status": "belum konsultasi"
+  },
+  {
+    "Nama": "FachruddinGhalibi",
+    "Nim": "FachruddinGhalibi",
+    "Tanggal": "FachruddinGhalibi",
+    "Jam": "FachruddinGhalibi",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "ihsan maulana",
+    "Nim": "ihsan maulana",
+    "Tanggal": "ihsan maulana",
+    "Jam": "ihsan maulana",
+    "Status": "sudah konsultasi"
+  }
+]
