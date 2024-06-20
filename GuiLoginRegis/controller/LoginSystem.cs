@@ -4,68 +4,98 @@ using System.Linq;
 
 namespace GuiLoginRegis.controller
 {
+    public interface ILoginStrategy<T>
+    {
+        bool Login(LoginSystem<T> loginSystem, string username, string password);
+    }
+
+    public class AdminLoginStrategy<T> : ILoginStrategy<T>
+    {
+        public bool Login(LoginSystem<T> loginSystem, string username, string password)
+        {
+            var adminAccount = loginSystem.AdminAccounts.FirstOrDefault(a => a.Username.Equals((T)Convert.ChangeType(username, typeof(T))));
+            if (adminAccount != null && adminAccount.Password == password)
+            {
+                loginSystem.SetAdminAccount(adminAccount);
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public class UserLoginStrategy<T> : ILoginStrategy<T>
+    {
+        public bool Login(LoginSystem<T> loginSystem, string username, string password)
+        {
+            var userAccount = loginSystem.UserAccounts.FirstOrDefault(u => u.Username.Equals((T)Convert.ChangeType(username, typeof(T))));
+            if (userAccount != null && userAccount.Password == password)
+            {
+                loginSystem.SetUserAccount(userAccount);
+                return true;
+            }
+            return false;
+        }
+    }
+
+
     public class LoginSystem<T>
     {
         private enum State
         {
             NotLoggedIn,
-            EnteringUsername,
-            EnteringPassword,
             LoggedIn
         }
 
         private State currentState = State.NotLoggedIn;
-        private List<Account<T>> adminAccounts;
-        private List<Account<T>> userAccounts;
+        public List<Account<T>> AdminAccounts { get; private set; }
+        public List<Account<T>> UserAccounts { get; private set; }
         private Account<T> currentAccount;
         private bool isAdminLoggedIn = false;
+        private ILoginStrategy<T> loginStrategy;
 
         public LoginSystem(List<Account<T>> admins, List<Account<T>> users)
         {
-            adminAccounts = admins;
-            userAccounts = users;
+            AdminAccounts = admins;
+            UserAccounts = users;
+        }
+
+        public void SetLoginStrategy(ILoginStrategy<T> strategy)
+        {
+            loginStrategy = strategy;
         }
 
         public void AddAdminAccount(Account<T> admin)
         {
-            adminAccounts.Add(admin);
+            AdminAccounts.Add(admin);
         }
 
         public void AddUserAccount(Account<T> user)
         {
-            userAccounts.Add(user);
+            UserAccounts.Add(user);
         }
 
         public void SetAdminAccount(Account<T> admin)
         {
             currentAccount = admin;
             isAdminLoggedIn = true;
+            currentState = State.LoggedIn;
         }
 
         public void SetUserAccount(Account<T> user)
         {
             currentAccount = user;
             isAdminLoggedIn = false;
+            currentState = State.LoggedIn;
         }
 
         public bool StartLogin(string username, string password)
         {
-            currentAccount = adminAccounts.FirstOrDefault(a => a.Username.Equals((T)Convert.ChangeType(username, typeof(T)))) ??
-                                userAccounts.FirstOrDefault(u => u.Username.Equals((T)Convert.ChangeType(username, typeof(T))));
-
-            if (currentAccount != null && currentAccount.Password == password)
+            if (loginStrategy != null)
             {
-                isAdminLoggedIn = adminAccounts.Contains(currentAccount);
-                currentState = State.LoggedIn;
-                return true; // Login successful
+                return loginStrategy.Login(this, username, password);
             }
-            else
-            {
-                currentState = State.NotLoggedIn;
-                return false; // Login failed
-            }
+            return false;
         }
-
 
         public void Logout()
         {
