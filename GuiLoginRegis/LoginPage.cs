@@ -12,8 +12,8 @@ namespace GuiLoginRegis
     {
         private LoginSystem<string> loginSystem;
 
-        private const string AdminAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\admin_accounts.json"; // Ganti dengan path yang sesuai
-        private const string UserAccountsFilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\user_accounts.json"; // Ganti dengan path yang sesuai
+        private const string AdminAccountsFilePath = "C:\\Users\\Asus\\Source\\Repos\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\admin_accounts.json"; // Ganti dengan path yang sesuai
+        private const string UserAccountsFilePath = "C:\\Users\\Asus\\Source\\Repos\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\user_accounts.json"; // Ganti dengan path yang sesuai
 
         public LoginPage()
         {
