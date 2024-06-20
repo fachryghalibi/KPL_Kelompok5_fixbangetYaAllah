@@ -22,7 +22,6 @@ namespace GuiLoginRegis
             InitializeComponent();
             LoadBookingData();
         }
-
         private void LoadBookingData()
         {
             string filePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\booking.json";
@@ -92,12 +91,9 @@ namespace GuiLoginRegis
 
         private void label2_Click(object sender, EventArgs e)
         {
-            // Handler label click event
         }
-
         private void BookingJadwalTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Handler cell content click event
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
