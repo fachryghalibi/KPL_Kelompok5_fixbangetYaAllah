@@ -14,8 +14,8 @@ namespace GuiLoginRegis
 {
     public partial class ForgotPassword : Form
     {
-        private string dataFilePath1 = @"C:\Users\Asus\Source\Repos\KPL_Kelompok5_fixbangetYaAllah\GuiLoginRegis\json\user_accounts.json";
-        private string dataFilePath2 = @"C:\Users\Asus\Source\Repos\KPL_Kelompok5_fixbangetYaAllah\GuiLoginRegis\json\admin_accounts.json";
+        private string dataFilePath1 = @"C:\Users\ASUS\Documents\C#\KPL_Kelompok5_fixbangetYaAllah\GuiLoginRegis\json\user_accounts.json";
+        private string dataFilePath2 = @"C:\Users\ASUS\Documents\C#\KPL_Kelompok5_fixbangetYaAllah\GuiLoginRegis\json\admin_accounts.json";
 
 
         public ForgotPassword()
@@ -41,6 +41,9 @@ namespace GuiLoginRegis
             if (accountFound)
             {
                 MessageBox.Show("Password berhasil diubah.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoginPage login = new LoginPage();
+                login.Show();
+                this.Hide();
             }
             else
             {

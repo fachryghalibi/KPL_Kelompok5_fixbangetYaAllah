@@ -32,7 +32,7 @@
     "Nim": "senin",
     "Tanggal": "13",
     "Jam": "13",
-    "Status": "belum konsultasi"
+    "Status": "sudah konsultasi"
   },
   {
     "Nama": "makan",
@@ -81,6 +81,13 @@
     "Nim": "ihsan maulana",
     "Tanggal": "ihsan maulana",
     "Jam": "ihsan maulana",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "Brody",
+    "Nim": "Senin",
+    "Tanggal": "14",
+    "Jam": "10.00",
     "Status": "sudah konsultasi"
   }
 ]

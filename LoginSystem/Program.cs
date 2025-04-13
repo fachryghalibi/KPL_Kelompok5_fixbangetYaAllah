@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var mainAdminAccount = LoadAccountFromFile<string>("adminAccount.json");
+        var mainAdminAccount = LoadAccountFromFile<string>("C:\\Users\\ASUS\\Documents\\C#\\KPL_Kelompok5_fixbangetYaAllah\\LoginSystem\\adminAccounts.json");
         var userAccount = LoadAccountFromFile<string>("userAccount.json");
 
         if (mainAdminAccount == null)

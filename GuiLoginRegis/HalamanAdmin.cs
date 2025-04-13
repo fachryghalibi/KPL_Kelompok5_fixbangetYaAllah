@@ -24,7 +24,7 @@ namespace GuiLoginRegis
         }
         private void LoadBookingData()
         {
-            string filePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\booking.json";
+            string filePath = "C:\\Users\\ASUS\\Documents\\C#\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\booking.json";
 
             if (File.Exists(filePath))
             {
@@ -52,7 +52,7 @@ namespace GuiLoginRegis
             try
             {
                 string json = JsonConvert.SerializeObject(bookings, Formatting.Indented); // Serialize bookings
-                File.WriteAllText("D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\booking.json", json); // Save to JSON file
+                File.WriteAllText("C:\\Users\\ASUS\\Documents\\C#\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\booking.json", json); // Save to JSON file
             }
             catch (Exception ex)
             {
@@ -98,8 +98,6 @@ namespace GuiLoginRegis
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            loginSystem.Logout();
-
             MessageBox.Show("Successfully logged out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             LoginPage login = new LoginPage();
