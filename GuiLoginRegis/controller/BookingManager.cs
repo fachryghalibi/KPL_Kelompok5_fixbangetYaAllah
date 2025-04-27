@@ -8,7 +8,7 @@ namespace GuiLoginRegis
 {
     public static class BookingManager
     {
-        private const string FilePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\booking.json";
+        private const string FilePath = "C:\\Users\\ASUS\\Documents\\C#\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\booking.json";
 
         public static void AddBooking(string nama, string nim, string tanggal, string jam, string status)
         {

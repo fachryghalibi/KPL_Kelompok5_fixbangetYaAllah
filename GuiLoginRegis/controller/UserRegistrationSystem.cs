@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json;
 
 namespace GuiLoginRegis.controller
 {
@@ -20,7 +21,7 @@ namespace GuiLoginRegis.controller
         }
 
         private State currentState = State.EnteringUsername;
-        private readonly string filePath = "D:\\Fachry\\Kuliah\\KPL_FIX BANGET YA ALLAH\\KPL_Kelompok5_TelkomMedika\\KPL_Kelompok5_TelkomMedika\\GuiLoginRegis\\json\\user_accounts.json";
+        private readonly string filePath = "C:\\Users\\ASUS\\Documents\\C#\\KPL_Kelompok5_fixbangetYaAllah\\GuiLoginRegis\\json\\user_accounts.json";
 
         public UserRegistrationSystem()
         {

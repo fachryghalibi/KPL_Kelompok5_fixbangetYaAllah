@@ -32,14 +32,14 @@
     "Nim": "senin",
     "Tanggal": "13",
     "Jam": "13",
-    "Status": "belum konsultasi"
+    "Status": "sudah konsultasi"
   },
   {
     "Nama": "makan",
     "Nim": "siang",
     "Tanggal": "11",
     "Jam": "16",
-    "Status": "belum konsultasi"
+    "Status": "sudah konsultasi"
   },
   {
     "Nama": "qwrf3qwe",
@@ -81,6 +81,13 @@
     "Nim": "ihsan maulana",
     "Tanggal": "ihsan maulana",
     "Jam": "ihsan maulana",
+    "Status": "sudah konsultasi"
+  },
+  {
+    "Nama": "Brody",
+    "Nim": "Senin",
+    "Tanggal": "14",
+    "Jam": "10.00",
     "Status": "sudah konsultasi"
   }
 ]
